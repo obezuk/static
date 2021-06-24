@@ -1,6 +1,17 @@
 <html>
   <head>
     <title>Test Load Remoting Client</title>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          }, function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
     <link rel="preload" href="https://assets.browser.run/20280/remoting_client.9abe9fd005383892a685203c4e5a3c0c.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
   </head>
   <body>
